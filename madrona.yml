@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  roles:
+    - headless
+    - i3-desktop
+    - desktop-apps

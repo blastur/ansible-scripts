@@ -1,0 +1,24 @@
+- name: Install Archlinux i3 desktop
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop: 
+    - i3-wm
+    - xorg-server
+    - xorg-xinit
+    - xorg-xrandr
+    - xorg-xrdb
+    - xorg-xsetroot
+    - rxvt-unicode
+    - feh
+    - i3status
+    - i3lock
+    - fzf
+    - notify-osd
+    - libnotify    
+    - xclip
+    - scrot
+    - gxkb
+    - autorandr
+    - brightnessctl
+  become: yes

@@ -1,0 +1,16 @@
+- name: Install Archlinux sway desktop
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop: 
+    - sway
+    - xorg-xwayland
+    - swayidle
+    - swaylock
+    - fzf
+    - i3status
+    - alacritty
+    - wl-clipboard
+    - polkit    
+    - grim
+  become: yes

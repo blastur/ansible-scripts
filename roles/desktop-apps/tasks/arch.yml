@@ -1,0 +1,18 @@
+---
+- name: Install Archlinux desktop apps
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - syncthing
+    - keepassxc
+    - firefox
+    - network-manager-applet
+  become: yes
+
+- name: Install blueman
+  ansible.builtin.package:
+    name: blueman
+    state: latest
+  tags: bluetooth
+  become: yes

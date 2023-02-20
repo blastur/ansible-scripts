@@ -1,0 +1,56 @@
+- name: Install Archlinux base packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - htop
+    - unzip
+    - man-db
+    - bash
+    - openssh
+    - git
+    - udisks2
+    - encfs
+    - python
+    - nano
+    - sshfs
+    - which
+    - yadm
+    - wireguard-tools
+  become: yes
+
+- name: Install Archlinux audio packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  tags:
+    - audio
+  loop:
+    - pipewire
+    - pipewire-alsa
+    - wireplumber
+  become: yes
+
+- name: Install Archlinux BT packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: latest
+  tags:
+    - bluetooth
+  loop:
+    - bluez
+    - bluez-utils
+  become: yes
+
+- name: Enable bluez service
+  become: yes
+  ansible.builtin.systemd:
+    name: bluetooth
+    enabled: true
+    masked: no
+
+- name: Make sure bluez is running
+  become: yes
+  ansible.builtin.systemd:
+    state: started
+    name: bluetooth

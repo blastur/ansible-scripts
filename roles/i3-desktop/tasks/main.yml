@@ -1,0 +1,5 @@
+---
+- name: Install Archlinux i3 desktop
+  ansible.builtin.include_tasks:
+    file: arch.yml
+  when: ansible_facts['distribution'] == "Archlinux"

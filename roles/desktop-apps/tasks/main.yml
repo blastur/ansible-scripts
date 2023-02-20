@@ -1,0 +1,7 @@
+---
+- name: Archlinux desktop apps
+  ansible.builtin.include_tasks:
+    file: arch.yml
+  when:
+    - ansible_facts['distribution'] == "Archlinux"
+
